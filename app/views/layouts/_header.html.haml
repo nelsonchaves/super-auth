@@ -19,6 +19,9 @@
             .fa.fa-user
             %b= current_user.email
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+            = link_to user_path(current_user), class: "dropdown-item #{'active font-weight-bold' if current_page?(user_path(current_user))}" do
+              .fa.fa-user
+              %b My profile
             = link_to edit_user_registration_path, class: "dropdown-item #{'active font-weight-bold' if current_page?(edit_user_registration_path)}" do
               .fa.fa-cog
               %b Account settings
