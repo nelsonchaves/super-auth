@@ -6,3 +6,27 @@
 %br/
 %b Confirmation:
 = user.confirmed?
+%br/
+%b
+  = 'sign_in_count'.humanize
+  \:
+= user.sign_in_count
+%br/
+%b= 'current_sign_in_at'.humanize
+  \:
+= user.current_sign_in_at
+%br/
+%b
+  = 'last_sign_in_at'.humanize
+  \:
+= user.last_sign_in_at
+%br/
+%b
+  = 'current_sign_in_ip'.humanize
+  \:
+= user.current_sign_in_ip
+%br/
+%b
+  = 'last_sign_in_ip'.humanize
+  \:
+= user.last_sign_in_ip
