@@ -273,11 +273,18 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:client], Rails.application.credentials[Rails.env.to_sym][:github][:secret]
-  config.omniauth :google_oauth2, Rails.application.credentials.dig(:google_oauth2, :client_id), Rails.application.credentials.dig(:google_oauth2, :client_secret)
-  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :client), Rails.application.credentials.dig(:facebook, :secret)
-  # config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :id), Rails.application.credentials.dig(:twitter, :secret)
-
+  if Rails.application.credentials[Rails.env.to_sym].present? && Rails.application.credentials[Rails.env.to_sym][:github].present?
+    config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret]
+  end
+  if Rails.application.credentials[:google_oauth2].present?
+    config.omniauth :google_oauth2, Rails.application.credentials[:google_oauth2][:id], Rails.application.credentials[:google_oauth2][:secret]
+  end
+  if Rails.application.credentials[:facebook].present?
+    config.omniauth :facebook, Rails.application.credentials[:facebook][:id], Rails.application.credentials[:facebook][:secret]
+  end
+  if Rails.application.credentials[:twitter].present?
+    config.omniauth :twitter, Rails.application.credentials[:twitter][:id], Rails.application.credentials[:twitter][:secret]
+  end
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
