@@ -28,4 +28,8 @@ class User < ApplicationRecord
     user.confirmed_at = Time.now # autoconfirm user from omniauth
     user
   end
+
+  def to_s
+    email
+  end
 end
