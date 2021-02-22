@@ -1,0 +1,19 @@
+%h2
+  Editing roles for #{@user}
+= form_for(@user) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user.errors.count, "error")
+        prohibited this user from being saved:
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li
+            = message
+  - User::ROLES.each do |role|
+    %label
+      = f.check_box role
+      = role.to_s.humanize
+    %br/
+  = f.button :submit
+= link_to "Cancel", user_path(@user)
