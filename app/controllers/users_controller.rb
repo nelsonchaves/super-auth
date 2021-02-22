@@ -37,4 +37,10 @@ class UsersController < ApplicationController
     end
     redirect_to @user, notice: "User access locked: #{@user.access_locked?}"
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(*User::ROLES)
+  end
 end
