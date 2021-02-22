@@ -58,6 +58,12 @@
 - if user.image.present?
   = image_tag user.image, size: "50x50"
 %br/
+%b= 'roles'.humanize
+\:
+= user.active_roles.join(", ")
+%br/
+= link_to "Edit roles", edit_user_path(user)
+%br/
 = link_to ban_status(user), ban_user_path(user), method: :patch
 %br/
 = link_to "Delete", user, method: :delete, data: {confirm: "Are you sure"}
