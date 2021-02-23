@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: [:edit, :update, :ban, :destroy]
 
   def index
     @users = User.all.order(created_at: :desc)
@@ -42,5 +43,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(*User::ROLES)
+  end
+
+  def require_admin
+    # unless current_user.admin? || current_user.teacher?
+    unless current_user.admin?
+      redirect_to root_path, alert: "You are not authorized to perform this action"
+    end
   end
 end
