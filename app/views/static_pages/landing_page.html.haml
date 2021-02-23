@@ -1,5 +1,41 @@
 .container-fluid
-  %h1 Hello World!
+  %h1
+    Ruby on Rails 6 User Management app
+  = link_to "Privacy Policy", privacy_policy_path, class: "btn btn-lg btn-warning"
   = link_to privacy_policy_path, class: "btn btn-lg btn-warning" do
+    %i.fas.fa-file-word
     Privacy Policy
-    .fas.fa-file-word
+.text-center
+  %h2 Core features
+  .row
+    .col-md-6
+      %h2 Authentication
+      %ul
+        %li Log in with email
+        %li Log in with Google
+        %li Log in with Facebook
+        %li Log in with Twitter
+        %li Log in with Github
+        %li Invisible Recaptcha
+        %li Email address confirmations
+    .col-md-6
+      %h2 Authorization
+      %ul
+        %li User roles
+        %li Admin can edit user roles
+        %li Admin can ban users
+        %li Admin can delete users
+    .col-md-6
+      %h2 Invitations
+      %ul
+        %li Users can be invited to join the app
+    .col-md-6
+      %h2 Image uploads
+      %ul
+        %li Users can upload an avatar
+        %li Users can edit their profile
+    .col-md-6
+      %h2 Search  Sort Users
+      %ul
+        %li Users can found by email or name
+        %li Users can sorted
