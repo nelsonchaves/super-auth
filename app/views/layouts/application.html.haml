@@ -10,15 +10,16 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
-  %body
-    = render "layouts/messages"
+  %body.bg-bodylight
     = render "layouts/header"
-    .container
-      %br
+    = render "layouts/messages"
+    .container-fluid
+      %br/
       = yield
   %footer.bg-dark.text-light
-    .container
+    %br/
+    .container-fluid.text-center
       Footer content
-      %p
+      %br/
       = link_to "Privacy Policy", privacy_policy_path
-      %p
+    %br/
